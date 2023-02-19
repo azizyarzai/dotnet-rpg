@@ -7,11 +7,13 @@ global using dotnet_rpg.Models;
 
 global using dotnet_rpg.Services.CharacterService;
 global using dotnet_rpg.Services.WeaponService;
+global using dotnet_rpg.Services.FightService;
 
 global using dotnet_rpg.Dtos.Character;
 global using dotnet_rpg.Dtos.User;
 global using dotnet_rpg.Dtos.Weapon;
 global using dotnet_rpg.Dtos.Skill;
+global using dotnet_rpg.Dtos.Fight;
 
 global using dotnet_rpg.Data;
 
@@ -42,9 +44,12 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IFightService, FightService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
